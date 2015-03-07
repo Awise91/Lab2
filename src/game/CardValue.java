@@ -16,10 +16,11 @@ public enum CardValue{
 	KING(13);
 	
 	private int value;
+	
 	CardValue(int v) {
 		value = v;
 	}
-	int getCardValue() {
+	int  getCardValue() {
 		return value;
 	}
 }

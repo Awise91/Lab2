@@ -2,6 +2,7 @@ package game;
 
 import java.util.Collections;
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.Random;
 
 public class Deck {
@@ -12,17 +13,17 @@ public class Deck {
 	static ArrayList<Card> gameDeck = new ArrayList<Card>();
 
 	public static void makeDeck() {
-		for (int s = 0; s <= 40 ; s+=10) {
-			for (int v = 1; v <= 13; v++) {
-			Card c = Card.makeCard();
+		for (Suit s : EnumSet.allOf(Suit.class)) {
+			for (CardValue v : EnumSet.allOf(CardValue.class)){
+			Card c = new Card(v, s);
 
 			gameDeck.add(c);
 		}
 		Collections.shuffle(gameDeck);
 	}
 }
-	public static Card draw() {
-		Card c = gameDeck.get(0);
+	public Card draw() {
+		Card c = (Card) gameDeck.get(0);
 		gameDeck.remove(c);
 		return c;
 	}
